@@ -1,0 +1,27 @@
+Masters Best Times by Age (1998-2013)
+Age	Name	Time	Year
+40	Charlene Lyford	20:19	2006
+41	Jill Dunphy	25:25	2001
+42	Tammy Stokoe	25:04	2005
+43	Lynn Usack	22:43	2006
+44	Michelle Eastman	25:16	2011
+45	Ann Bushey	23:14	2003
+46	Lorrie Tily	22:24	2007
+47	Sue Leone	24:19	2000
+48	Zsofia Franck	23:27	2001
+49	Zsofia Franck	22:40	2002
+50	Suzanne Leone	22:44	2003
+51	Suzanne Leone	22:59	2004
+52	Marie Fitzsimmons	23:34	2011
+53	Suzanne Leone	22:31	2006
+54	Sue Leone	23:36	2007
+55	Suzanne Leone	23:45	2008
+56	Zsofia Franck	22:35	2008
+57	Zsofia Franck	23:53	2010
+58	Pam Niles	31:22	2005
+59	Zsofia Franck	25:03	2012
+60	Zsofia Franck	25:35	2013
+61	Marilyn Miller	34:13	2003
+62	Carol Forehand	39:54	2013
+63	Connie Ciccone	45:10	2008
+67	Kathy Dexter	44:30	2013

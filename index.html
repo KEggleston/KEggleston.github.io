@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>2014 Groton Labor Day 5K</title>
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.0/themes/blitzer/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="groton5k.css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+	<script>
+		function buildTables($this) {
+			var i, where = $this.parents("div.ui-tabs-panel").find(".resultsArea"),
+				filenames = $this.data("filenames").split(","),
+				makeTable = function (results) {
+					var r, tableContents = "", lines = results.split("\n"),
+						fillRow = function (line, tag) {
+							var j, rowContents = "", cells = line.split("\t");
+							for (j = 0; j < cells.length; j += 1) {
+								rowContents += "<" + tag + ">" + cells[j] + "<\/" + tag + ">";
+							}
+							return ("<tr>" + rowContents + "<\/tr>");
+						};
+					tableContents += "<caption>" + lines[0] + "<\/caption>";
+					tableContents += fillRow(lines[1], "th");
+					for (r = 2; r < lines.length; r += 1) {
+						tableContents += fillRow(lines[r], "td");
+					}
+					return "<table>" + tableContents + "<\/table>";
+				},
+				processFile = function (results) {
+					$(where).append(makeTable(results)).find("table").addClass("resultsTable");
+				};
+			$(where).empty().hide();
+			for (i = 0; i < filenames.length; i += 1) {
+				$.get(filenames[i], processFile, "text");
+			}
+			/*Couldn't get tables to show after resultsFrame was displayed without this*/
+			setTimeout(function () {
+				$(where).show();
+			}, 0);
+		}
+		$(function () {
+			$(".nojs").hide();
+			$("#tabs").show().tabs({
+				active: 0,
+				heightStyle: "content"
+			});
+			$("#selectedYr").on("change", function () {
+				var where = $(this).parents("div.ui-tabs-panel").find(".resultsArea");
+				$(where).empty().html("<iframe id='resultsFrame'><\/iframe>");
+				$("#resultsFrame").attr('src', $(this).val());
+			});
+			$(".showresults").on("click change", function () {
+				buildTables($(this));
+			});
+			$(".showtop10").on("change", function () {
+				$(this).data('filenames', $(this).val());
+				buildTables($(this));
+			});
+/* Add as footer via wminm%.txt files: * - Overall winner was also over 40 years old.  */
+				}, 5000);
+			});
+		});	
+	</script>
+  </head>
+
+  <body>
+	<h1>Groton Labor Day 5K</h1>
+	<div class="nojs">
+		<p>It appears you do not have JavaScript enabled.  Please turn on JavaScript to use this site.</p>
+		<p><a href="http://www.grotoncs.org/pdf/2014%20Race%20Application.pdf">Entry form</a></p>
+	</div>
+	<div id="tabs">
+		<ul>
+			<li><a href="#home">Home</a></li>
+			<li><a href="#register">Register</a></li>
+			<li><a href="#map">Map</a></li>
+			<li><a href="#awards">Awards</a></li>
+			<li><a href="#records">Records</a></li>
+			<li><a href="#results">Results</a></li>
+			<li><a href="#trivia">Trivia</a></li>
+		</ul>
+
+		<div id="home">
+			<h3>17th Annual Groton Labor Day 5K and 1 Mile Fun Run</h3>
+			<div class="twocols">
+				<span><b>When: </b>September 1, 2014</span>
+				<p><b>Where: </b>Groton High School, Groton, NY</p>
+				<table>
+					<caption>Race Day Schedule:</caption>
+					<tr><td>7:30-8:45 am</td> <td>Race Day Registration</td></tr>
+					<tr><td>9:00 am</td> <td>1 Mile Fun Run</td></tr>
+					<tr><td>9:30 am</td> <td>5K Race</td></tr>
+				</table>
+				<p><b>Course:</b>
+				<br /><span>The course follows village streets (2.5 miles), an old railroad 
+				bed (0.5 miles), and finishes on the high school track. Some flat terrain, 
+				with a few steady inclines and declines, and one short, steep hill just 
+				before the one mile mark.</span></p>
+			</div>
+			<div class="twocols centerCol">
+				<img src="aphoto.jpg" alt="Race Photo" />
+			</div>
+			<div class="clear">
+				<p class="subtext"><b>Sponsoring Organization:</b>
+				<br /><i>This race is sponsored by, and is a fund raiser for the Groton 
+				Varsity Cross Country Program. All proceeds benefit the Girls’ and Boys’ 
+				Cross Country Teams. Every year’s proceeds have helped fund trips to other 
+				competitions and to purchase team apparel.</i></p>
+			</div>
+		</div>
+
+		<div id="register">
+			<h4>Registration</h4>
+			<p>Entry fee for those pre-registered prior to August 23 will be $14 for 
+			students and $18 for adults. The 1 mile Fun Run is free.</p>
+			<p>Registrations received after August 23 (August 29 online) and race day will 
+			be $20 for students and $25 for adults. Registrations not received by race day 
+			will be considered not sent and you will need to register on race day.</p>
+			<p>*** Team Discounts Available (5+ athletes &rArr; 
+			<a href="mailto:sweeks@groton.cnyric.org">email Scott</a>) 
+			<br />*** Fun run competitors can purchase a T-Shirt for $8 &rArr; 
+			Send order with application. Quantities are limited!</p>
+			<p><a href="https://www.getentered.com/Register/?event=26770" target="_blank">
+			Register online at GetEntered.com
+			<img src="GetEntered.jpg" class="regimg" alt="GetEntered" /></a></p>
+			<p><a href="http://www.grotoncs.org/pdf/2014%20Race%20Application.pdf">
+			Print a paper copy of the entry form  
+			<img src="pdf.jpg" class="regimg" alt="PDF" /></a></p>
+		</div>
+
+		<div id="map">
+			<img src="courseMap.png" alt="Course Map" />
+			<p class="subtext">More route information at: 
+			<a href="http://www.usatf.org/routes/view.asp?rID=12258">
+			http://www.usatf.org/routes/view.asp?rID=12258</a></p>
+		</div>
+		
+		<div id="awards">
+			<h4>Awards</h4>
+			<div class="twocols">
+				<ul class="shavetop spaceitems">
+					<li>Ribbons to every finisher in both races</li>
+					<li>Top 3 and youngest in the Mile Fun Run </li>
+					<li>$25 gift certificate to top male and female in 5K</li> 
+					<li>Plaque to top 3 male and female in 5K </li>
+					<li>Plaque to top Masters male & female in 5K </li>
+					<li>Medals to the top 3 in each age group:<br />
+					&lt;15, 15-19, 20-29, 30-39, 40-49, 50-59, 60+</li>
+					<li>T-shirts to first 100 entries received</li>
+				</ul>
+			</div>
+			<div class="twocols">
+				<img src="http://news.bbcimg.co.uk/media/images/62092000/jpg/_62092955_mo_getty.jpg" style="width:75%;" alt="award" />
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="records">
+			<div class="resultsCol">
+				<h4>Course Records</h4>
+				<p>Overall Male: 
+					<ul>
+						<li>16:06 Stephen Getman (2000)
+					</ul>
+				<p>Masters Male: 
+					<ul>
+						<li>17:03 Adam Engst (2012) and Casey Carlstrom (2006)
+					</ul>
+				<p>Overall Female:
+					<ul>
+						<li>18:46 Murphee Hayes (2006)
+					</ul>
+				<p>Masters Female: 
+					<ul>
+						<li>20:19 Charlene Lyford (2006)
+					</ul>
+				<p><a class="showresults" href="#" data-filenames="bbam.txt,bbamm.txt">
+				View best times by age - Male</a></p>
+				<p><a class="showresults" href="#" data-filenames="bbaf.txt,bbafm.txt">
+				View best times by age - Female</a></p>	
+			</div>
+			<div class="resultsCol resultsArea ui-helper-clearfix">
+				<img src="http://cdn.running.competitor.com/files/2011/06/Huddle_MollyFV-USout11.JPG.jpeg" style="height:80%;" alt="winner" />
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="results">
+			<div class="resultsCol">
+				<h4>Results</h4>
+				<p>View results by year: 
+				<select id="selectedYr">
+					<option>Select year</option>
+					<option value="http://leonetiming.com/2013/Roads/Groton5K13.htm">2013</option>
+					<option value="http://leonetiming.com/2012/Roads/Groton5K12.htm">2012</option>
+					<option value="http://leonetiming.com/2011/Roads/Groton5K11.htm">2011</option>
+					<option value="http://leonetiming.com/2010/Roads/Groton5K10.txt">2010</option>
+					<option value="http://leonetiming.com/2009/Roads/Groton5K09.txt">2009</option>
+					<option value="http://leonetiming.com/2008/Roads/Groton5K08.txt">2008</option>
+					<option value="http://leonetiming.com/2007/Roads/Groton5K07.txt">2007</option>
+					<option value="http://leonetiming.com/2006/Roads/Groton5k06.txt">2006</option>
+					<option value="http://leonetiming.com/2005/Roads/Groton05.txt">2005</option>
+					<option value="http://leonetiming.com/2004/Roads/Groton04.txt">2004</option>
+					<option value="http://leonetiming.com/2003/Roads/Groton03.txt">2003</option>
+					<option value="http://leonetiming.com/2002/Roads/Groton02.htm">2002</option>
+					<option value="http://leonetiming.com/2001/groton01.htm">2001</option>
+					<option value="Results2000.txt">2000</option>
+					<option value="Results1999.txt">1999</option>
+					<option value="Results1998.txt">1998</option>
+				</select></p>
+				<p>View best times by age group: 
+				<select class="showtop10">
+					<option>Select age group</option>
+					<option value="topu15m.txt,topu15f.txt">Under 15</option>
+					<option value="top1519m.txt,top1519f.txt">15-19</option>
+					<option value="top2029m.txt,top2029f.txt">20-29</option>
+					<option value="top3039m.txt,top3039f.txt">30-39</option>
+					<option value="top4049m.txt,top4049f.txt">40-49</option>
+					<option value="top5059m.txt,top5059f.txt">50-59</option>
+					<option value="topo60m.txt,topo60f.txt">60 and over</option>
+				</select></p>
+				<p><a class="showresults" href="#" data-filenames="topagm.txt,topagf.txt">
+				View top 10 age-graded performances</a></p>
+				<p><a class="showresults" href="#" data-filenames="winm.txt,winf.txt">
+				View list of winners</a></p>
+				<p><a class="showresults" href="#" data-filenames="winmm.txt,winmf.txt">
+				View list of Masters winners</a></p>
+			</div>
+			<div class="resultsCol resultsArea ui-helper-clearfix centerCol">
+				<img src="http://insatiably.files.wordpress.com/2012/06/running-inspiration-8.jpg" alt="results" />
+			</div>
+			<div class="clear"></div>
+		</div>
+
+		<div id="trivia">
+			<h4>Trivia</h4>
+			<ul class="spaceitems">
+				<li>Largest field - 173 (2010)</li>
+				<li>Most wins (female) - 4: Murphee Hayes (2004-2007)</li>
+				<li>Most wins (male) - 3: Adam Engst (2003-2004, 2012)</li>
+				<li>Most finishes - 15: Steve Gallow (only missed 2007)</li>
+				<li>Youngest runner (5K) - 7 years old: Vincent Borden (2006), 
+				    Clara Karastury-Duga (2004), Christopher Van Loon (2003)</li>
+				<li>Oldest runner (5K) - 76 years old: Joseph Familo (2000)</li>
+			</ul>
+		</div>
+	</div>
+	
+  </body>
+</html>

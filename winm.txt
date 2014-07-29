@@ -1,0 +1,18 @@
+5K Male Winners
+Year	Name	Age	Time
+1998	Kirk Dornton	16	16:50
+1999	David Patruno	34	17:38
+2000	Stephen Getman	24	16:06
+2001	Mark Gaffney	34	17:02
+2002	Andrew Barnard	16	17:26
+2003	Adam Engst	35	17:24
+2004	Adam Engst	36	18:09
+2005	Andris Goncarovs	13	17:26
+2006	Casey Carlstrom	47	17:03
+2007	Eric Davis	27	17:19
+2008	Sam Mackenzie	25	17:32
+2009	Jonathan Cleveland	17	17:22
+2010	Nick Scalfone	25	16:30
+2011	Cameron Bruce	17	17:35
+2012	Adam Engst	44	17:03
+2013	Tom Eickelberg	24	17:16

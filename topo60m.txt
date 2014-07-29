@@ -1,0 +1,12 @@
+Top 10 - 60 and over Male			
+Name	Age	Time	Year
+Carl Franck	60	21:58	2012
+Carl Franck	61	22:52	2013
+David Fernandez	62	23:02	2012
+John Smillie	60	23:13	2013
+Chuck Collins	68	23:23	2002
+Al Wruck	66	23:26	2011
+Bill Howell	65	23:53	2012
+Al Wruck	65	23:57	2010
+Michael Anderson	62	24:21	2010
+Robert Miesner	62	24:32	2005

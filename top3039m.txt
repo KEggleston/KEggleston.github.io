@@ -1,0 +1,12 @@
+Top 10 - 30 to 39 Male			
+Name	Age	Time	Year
+Mark Gaffney	33	16:58	2000
+Mark Gaffney	34	17:02	2001
+Skip Strobel	30	17:21	2001
+Steven Folsom	33	17:22	2012
+Adam Engst	35	17:24	2003
+Adam Engst	37	17:27	2005
+Rob Winkky	31	17:28	2009
+Johan Eliasson	30	17:38	1999
+David Patruno	34	17:38	1999
+Adam Engst	34	17:44	2002

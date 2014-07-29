@@ -1,0 +1,58 @@
+/* initial display; no Javascript */
+#tabs { 
+	display: none; }
+.nojs { 
+	display: block; }
+
+
+.ui-widget {
+	font-size: 0.9em; }
+h1, h3 {
+	color:red; }
+.twocols {
+	width:50%; float:left; }
+.centerCol {
+	text-align:center; }
+.clear {
+	clear:both; }
+table {
+	border-collapse:collapse; }
+table caption {
+	font-weight: bold; }
+#home td {
+	padding:2px 8px; }
+#home table td:first-child {
+	text-align:center; }
+#home table caption {
+	text-align:left; }
+.resultsTable {
+	float:left;
+ 	border:1pt solid black;
+ 	font-size: 80%;}
+.resultsTable:first-child {
+ 	margin-right:1.5em; }
+.resultsTable caption {
+	padding:5px; }
+.resultsTable td, .resultsTable th {
+	text-align:center;
+	border: 1pt dotted gray;
+	padding:0 8px; }
+.subtext {
+	font-size:80%; }
+.regimg {
+	padding-left:1em; vertical-align:middle; height:50px; border:0; }
+.shavetop {
+	margin-top:0; }
+.spaceitems li {
+	padding:5px; }
+div.resultsCol {
+	float:left;
+ 	overflow: auto; }
+div.resultsCol:first-child {
+	width: 28%; }
+div.resultsCol:nth-child(2) {
+	width:72%; height:500px; }
+#resultsFrame {
+	height:100%; width:100%; }
+#results p {
+	margin-bottom: 1.5em; }

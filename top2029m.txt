@@ -1,0 +1,12 @@
+Top 10 - 20 to 29 Male			
+Name	Age	Time	Year
+Stephen Getman	24	16:06	2000
+Nick Scalfone	25	16:30	2010
+Eric Choudhary	25	17:13	2012
+Tom Eickelberg	24	17:16	2013
+Skip Strobel	29	17:16	2000
+Eric Davis	27	17:19	2007
+Geoff Hutchison	29	17:21	2006
+Robert Dunham	20	17:30	2013
+Sam Mackenzie	25	17:32	2008
+Adam Nalven	23	17:57	2002
