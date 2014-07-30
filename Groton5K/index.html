@@ -16,7 +16,7 @@
 						fillRow = function (line, tag) {
 							var j, rowContents = "", cells = line.split("\t");
 							if (cells.length === 1) {
-								rowContents += "<td colspan=4>" + cells[0] + "<\/td>";
+								rowContents += "<td colspan=4 class='noteCell'>" + cells[0] + "<\/td>";
 							} else {
 								for (j = 0; j < cells.length; j += 1) {
 									rowContents += "<" + tag + ">" + cells[j] + "<\/" + tag + ">";
@@ -38,7 +38,7 @@
 			for (i = 0; i < filenames.length; i += 1) {
 				$.get(filenames[i], processFile, "text");
 			}
-			/*Couldn't get tables to show after resultsFrame was displayed without this*/
+			/*Couldn't get tables to show after resultsFrame was displayed without following*/
 			setTimeout(function () {
 				$(where).show();
 			}, 0);
@@ -54,14 +54,13 @@
 				$(where).empty().html("<iframe id='resultsFrame'><\/iframe>");
 				$("#resultsFrame").attr('src', $(this).val());
 			});
-			$(".showresults").on("click change", function () {
+			$(".showresults").on("click", function () {
 				buildTables($(this));
 			});
 			$(".showtop10").on("change", function () {
 				$(this).data('filenames', $(this).val());
 				buildTables($(this));
 			});
-/* Add as footer via wminm%.txt files: * - Overall winner was also Masters age.  */
 		});	
 	</script>
   </head>
@@ -76,7 +75,7 @@
 		<ul>
 			<li><a href="#home">Home</a></li>
 			<li><a href="#register">Register</a></li>
-			<li><a href="#map">Map</a></li>
+			<li><a href="#course">Course</a></li>
 			<li><a href="#awards">Awards</a></li>
 			<li><a href="#records">Records</a></li>
 			<li><a href="#results">Results</a></li>
@@ -87,26 +86,23 @@
 			<h3>17th Annual Groton Labor Day 5K and 1 Mile Fun Run</h3>
 			<div class="twocols">
 				<span><b>When: </b>September 1, 2014</span>
-				<p><b>Where: </b>Groton High School, Groton, NY</p>
+				<p><b>Where: </b>Groton High School, 400 Peru Rd, Groton, NY</p>
 				<table>
 					<caption>Race Day Schedule:</caption>
-					<tr><td>7:30-8:45 am</td> <td>Race Day Registration</td></tr>
+					<tr><td>7:30-8:45 am</td> <td>Race Day Registration/Packet Pickup</td></tr>
 					<tr><td>9:00 am</td> <td>1 Mile Fun Run</td></tr>
 					<tr><td>9:30 am</td> <td>5K Race</td></tr>
 				</table>
-				<p><b>Course:</b>
-				<br /><span>The course follows village streets (2.5 miles), an old railroad 
-				bed (0.5 miles), and finishes on the high school track. Some flat terrain, 
-				with a few steady inclines and declines, and one short, steep hill just 
-				before the one mile mark.</span></p>
+				<p><b>Amenities:</b>
+				<br /><span>Parking, restrooms and showers will be available near registration
+				outside the high school gym. Post race refreshments.</span></p>
 			</div>
 			<div class="twocols centerCol">
 				<img src="aphoto.jpg" alt="Race Photo" />
 			</div>
 			<div class="clear">
-				<p class="subtext"><b>Sponsoring Organization:</b>
-				<br /><i>This race is sponsored by, and is a fund raiser for the Groton 
-				Varsity Cross Country Program. All proceeds benefit the Girls’ and Boys’ 
+				<p class="subtext">This race is sponsored by, and is a fund raiser for the  
+				Groton Varsity Cross Country Program. All proceeds benefit the Girls’ and Boys’ 
 				Cross Country Teams. Every year’s proceeds have helped fund trips to other 
 				competitions and to purchase team apparel.</i></p>
 			</div>
@@ -131,9 +127,14 @@
 			<img src="pdf.jpg" class="regimg" alt="PDF" /></a></p>
 		</div>
 
-		<div id="map">
+		<div id="course">
+			<h4>Course:</h4>
+			<p>The course follows village streets (2.5 miles), an old railroad 
+			bed (0.5 miles), and finishes on the high school track. Some flat terrain, 
+			with a few steady inclines and declines, and one short, steep hill just 
+			before the one mile mark.</p>
 			<img src="courseMap.png" alt="Course Map" />
-			<p class="subtext">More route information at: 
+			<p class="subtext">Interactive map and more route information at: 
 			<a href="http://www.usatf.org/routes/view.asp?rID=12258">
 			http://www.usatf.org/routes/view.asp?rID=12258</a></p>
 		</div>
@@ -164,19 +165,19 @@
 				<p>Overall Male: 
 					<ul>
 						<li>16:06 Stephen Getman (2000)
-					</ul>
+					</ul></p>	
 				<p>Masters Male: 
 					<ul>
 						<li>17:03 Adam Engst (2012) and Casey Carlstrom (2006)
-					</ul>
+					</ul></p>	
 				<p>Overall Female:
 					<ul>
 						<li>18:46 Murphee Hayes (2006)
-					</ul>
+					</ul></p>	
 				<p>Masters Female: 
 					<ul>
 						<li>20:19 Charlene Lyford (2006)
-					</ul>
+					</ul></p>	
 				<p><a class="showresults" href="#" data-filenames="bbam.txt,bbamm.txt">
 				View best times by age - Male</a></p>
 				<p><a class="showresults" href="#" data-filenames="bbaf.txt,bbafm.txt">

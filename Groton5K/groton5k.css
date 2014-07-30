@@ -9,6 +9,8 @@
 	font-size: 0.9em; }
 h1, h3 {
 	color:red; }
+h4 {
+	margin-top:1em; }
 .twocols {
 	width:50%; float:left; }
 .centerCol {
@@ -19,6 +21,8 @@ table {
 	border-collapse:collapse; }
 table caption {
 	font-weight: bold; }
+.subtext {
+	font-size:80%; font-style:italic; }
 #home td {
 	padding:2px 8px; }
 #home table td:first-child {
@@ -37,17 +41,21 @@ table caption {
 	text-align:center;
 	border: 1pt dotted gray;
 	padding:0 8px; }
-.subtext {
-	font-size:80%; }
-.regimg {
-	padding-left:1em; vertical-align:middle; height:50px; border:0; }
+.resultsTable th {
+	border-bottom: 1pt solid black; }
+td.noteCell {
+	border-top: 1pt solid black; font-style: italic; }
+img.regimg {
+	padding-left:1em;
+	vertical-align:middle;
+	height:50px;
+	border:0; }
 .shavetop {
 	margin-top:0; }
-.spaceitems li {
+ul.spaceitems li {
 	padding:5px; }
 div.resultsCol {
-	float:left;
- 	overflow: auto; }
+	float:left; overflow: auto; }
 div.resultsCol:first-child {
 	width: 28%; }
 div.resultsCol:nth-child(2) {
