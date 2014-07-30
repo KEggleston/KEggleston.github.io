@@ -15,8 +15,12 @@
 					var r, tableContents = "", lines = results.split("\n"),
 						fillRow = function (line, tag) {
 							var j, rowContents = "", cells = line.split("\t");
-							for (j = 0; j < cells.length; j += 1) {
-								rowContents += "<" + tag + ">" + cells[j] + "<\/" + tag + ">";
+							if (cells.length === 1) {
+								rowContents += "<td colspan=4>" + cells[0] + "<\/td>";
+							} else {
+								for (j = 0; j < cells.length; j += 1) {
+									rowContents += "<" + tag + ">" + cells[j] + "<\/" + tag + ">";
+								}
 							}
 							return ("<tr>" + rowContents + "<\/tr>");
 						};
@@ -57,7 +61,7 @@
 				$(this).data('filenames', $(this).val());
 				buildTables($(this));
 			});
-/* Add as footer via wminm%.txt files: * - Overall winner was also over 40 years old.  */
+/* Add as footer via wminm%.txt files: * - Overall winner was also Masters age.  */
 		});	
 	</script>
   </head>

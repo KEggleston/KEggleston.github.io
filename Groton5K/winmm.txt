@@ -16,3 +16,4 @@ Year	Name	Age	Time
 2011	Adam Engst	43	18:10
 2012	Jeffrey Naylor *	42	17:54
 2013	Keith Eggleston	53	19:55
+* - Overall winner was also Masters age.

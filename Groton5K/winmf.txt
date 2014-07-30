@@ -16,3 +16,4 @@ Year	Name	Age	Time
 2011	Lorrie Tily	50	23:17
 2012	Caroline Rasmussen	54	24:27
 2013	Zsofia Franck *	60	25:35
+* - Overall winner was also Masters age.
