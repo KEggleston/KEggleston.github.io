@@ -8,29 +8,30 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
 	<script>
+		function makeTable (results) {
+			var r, tableContents = "", 
+				lines = $.isArray(results) ? results : results.split("\n"),
+				fillRow = function (line, tag) {
+					var j, rowContents = "", cells = line.split("\t");
+					if (cells.length === 1) {
+						rowContents += "<td colspan=4 class='noteCell'>" + cells[0] + "<\/td>";
+					} else {
+						for (j = 0; j < cells.length; j += 1) {
+							rowContents += "<" + tag + ">" + cells[j] + "<\/" + tag + ">";
+						}
+					}
+					return ("<tr>" + rowContents + "<\/tr>");
+				};
+			tableContents += "<caption>" + lines[0] + "<\/caption>";
+			tableContents += fillRow(lines[1], "th");
+			for (r = 2; r < lines.length; r += 1) {
+				tableContents += fillRow(lines[r], "td");
+			}
+			return "<table>" + tableContents + "<\/table>";
+		}
 		function buildTables($this) {
 			var i, where = $this.parents("div.ui-tabs-panel").find(".resultsArea"),
 				filenames = $this.data("filenames").split(","),
-				makeTable = function (results) {
-					var r, tableContents = "", lines = results.split("\n"),
-						fillRow = function (line, tag) {
-							var j, rowContents = "", cells = line.split("\t");
-							if (cells.length === 1) {
-								rowContents += "<td colspan=4 class='noteCell'>" + cells[0] + "<\/td>";
-							} else {
-								for (j = 0; j < cells.length; j += 1) {
-									rowContents += "<" + tag + ">" + cells[j] + "<\/" + tag + ">";
-								}
-							}
-							return ("<tr>" + rowContents + "<\/tr>");
-						};
-					tableContents += "<caption>" + lines[0] + "<\/caption>";
-					tableContents += fillRow(lines[1], "th");
-					for (r = 2; r < lines.length; r += 1) {
-						tableContents += fillRow(lines[r], "td");
-					}
-					return "<table>" + tableContents + "<\/table>";
-				},
 				processFile = function (results) {
 					$(where).append(makeTable(results)).find("table").addClass("resultsTable");
 				};
@@ -43,12 +44,55 @@
 				$(where).show();
 			}, 0);
 		}
+		function nameSearch ($this) {
+			var searchString = $("#srchStr").val().toLowerCase(),
+				where = $this.parents("div.ui-tabs-panel").find(".resultsArea");
+			$.get("all.txt", function (content) {
+				var i, name, lines = content.split("\n"),
+					matches = [];
+				for (i = 1; i < lines.length; i += 1) {
+					name = lines[i].split("#")[0].toLowerCase();
+					if (name.search(searchString) >= 0) {
+						matches.push(lines[i]);
+					}
+				}
+				$(where).empty().show();
+				if (matches.length > 0) {
+					matches.unshift("Name\tAge\tTime\tYear");	
+					matches.unshift("Names matching '" + searchString + "'");
+					$(where).append(makeTable(matches)).find("table").addClass("resultsTable centerTable");
+				} else {
+					$(where).html("<p><b>No names match '" + searchString + "'<\/b><\/p>");
+				}
+			}, "text");
+		}
 		$(function () {
 			$(".nojs").hide();
 			$("#tabs").show().tabs({
 				active: 0,
 				heightStyle: "content"
 			});
+			var defaultSrchStr = "Enter all or part of a name";
+			$("#srchStr").val(defaultSrchStr).addClass("lightgray").on({
+				focus: function () {
+					if (this.value == defaultSrchStr) {
+						 this.value = "";
+						 $(this).removeClass("lightgray");
+						 $("#searchresults").show();
+					}
+				}, blur:  function () {
+					if (this.value == "") {
+						this.value = defaultSrchStr;
+						$(this).addClass("lightgray");
+						$("#searchresults").hide();
+					}
+				}, keypress: function (e) {
+					if (e.which === 13) {
+						$("#searchresults").trigger("click");
+						return false;
+					}
+				}
+    		});
 			$("#selectedYr").on("change", function () {
 				var where = $(this).parents("div.ui-tabs-panel").find(".resultsArea");
 				$(where).empty().html("<iframe id='resultsFrame'><\/iframe>");
@@ -60,6 +104,9 @@
 			$(".showtop10").on("change", function () {
 				$(this).data('filenames', $(this).val());
 				buildTables($(this));
+			});
+			$("#searchresults").on("click", function () {
+				nameSearch($(this));
 			});
 		});	
 	</script>
@@ -212,6 +259,8 @@
 					<option value="Results1999.txt">1999</option>
 					<option value="Results1998.txt">1998</option>
 				</select></p>
+				<p>Search all results by name: <input type="text" id="srchStr" size="28" />
+				<button id="searchresults" class="ui-helper-hidden">Search</button></p>
 				<p>View best times by age group: 
 				<select class="showtop10">
 					<option>Select age group</option>

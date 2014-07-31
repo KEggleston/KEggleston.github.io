@@ -52,6 +52,10 @@ img.regimg {
 	border:0; }
 .shavetop {
 	margin-top:0; }
+#srchStr {
+	font-size: 80%; }
+.lightgray {
+	color: gray; }
 ul.spaceitems li {
 	padding:5px; }
 div.resultsCol {
@@ -64,3 +68,7 @@ div.resultsCol:nth-child(2) {
 	height:100%; width:100%; }
 #results p {
 	margin-bottom: 1.5em; }
+.centerTable:first-child {
+	margin-left: auto;
+	margin-right: auto;
+	float: none; }
