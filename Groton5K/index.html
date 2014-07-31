@@ -51,7 +51,7 @@
 				var i, name, lines = content.split("\n"),
 					matches = [];
 				for (i = 1; i < lines.length; i += 1) {
-					name = lines[i].split("#")[0].toLowerCase();
+					name = lines[i].split("\t")[0].toLowerCase();
 					if (name.search(searchString) >= 0) {
 						matches.push(lines[i]);
 					}
